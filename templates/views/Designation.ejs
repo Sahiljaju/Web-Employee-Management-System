@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tasks</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">	
+		<div style="margin: 10px 20px 0px 20px;">
+			
+				
+				 <br><br>
+				<div style="box-sizing: border-box; width: 100%; border: 1px solid black;"> 
+					<table class="table table-striped table-hover text-center">
+						<thead>
+							<th>Sr.No.</th>
+							<th>Designation ID</th>
+							<th>Designation Name</th>
+							<th>Work</th>
+                            <th>Actions</th>
+							
+						</thead>
+						<tbody id="tbody">
+                            <%
+                            if(DesignationData.length!=0){
+                                var i=1;
+                                DesignationData.forEach(function(data){
+                            %>
+						<tr>
+							<td><%=i %></td>							
+							<td><%=data.DesigID %></td>
+							<td><%=data.DesigName %></td>
+							<td><%=data.Work %></td>
+							
+							<td>
+								<form action="/designation/<%=data.id%>", method="POST">
+									<input type="hidden", name="_method", value="DELETE">
+									<button type="submit">X</button>
+								</form>
+							</td>	
+						</tr>																
+						<%  i++; }) %>
+						<% } else{ %>
+							<tr>
+								<td colspan="7">No Data Found</td>
+							</tr>
+						<% } %>
+						</tbody>
+						<tfoot>
+							
+						</tfoot>
+					</table>
+				</div>
+			<div>
+				<br>
+			<form method="POST" enctype="multipart/form-data">	
+				<div class = "row" style="box-sizing:border-box; width: 100%; border:1px solid black; margin: 3px 0 0 0 ;">
+					<div class="col" >
+						<br><label>Designation ID</label>
+						<br><input type="text" name="DesigID" placeholder="ID" style="width:100%">
+						<br><label>Designation Description</label>
+						<br><textarea type="text" name="Work" placeholder="Description" style="width:100%; height: 90px; ">
+						</textarea>
+					</div>
+					<div class="col">
+						
+						<br><label>Designation Name</label>
+						<br><input type="text" name="DesigName" placeholder="Name" style="width:100%">
+						<br><label>Designation Priority</label>
+						<br><input type="number" name="DesignationPriority" placeholder="5-15"  style="width:100%" min="5" max="15">
+					<div>	
+						<br>					
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+						<button class="btn btn-outline-success my-2 my-sm-0" type="reset">clear</button>			
+					</div>
+					
+				</div>	
+			</form>	
+			</div>
+			</form>
+		</div>
+	</div>	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	
+</body>
+</html>

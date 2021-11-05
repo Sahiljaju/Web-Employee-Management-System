@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tasks</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">	
+		<div style="margin: 10px 20px 0px 20px;">
+			
+				<div class="input-group">
+				  
+				    <input id="search-input" type="search" id="form1" class="form-control" placeholder="Search"  /><button id="search-button" type="button" class="btn btn-primary" style="width: 70px;"><i class="fas fa-search"></i></button> 
+				  </div>
+				</div>
+				 <br><br>
+				<div style="box-sizing: border-box; width: 100%; border: 1px solid black;"> 
+					<table class="table table-striped table-hover text-center">
+						<thead>
+							<th>Id</th>
+							<th>Assign Date</th>
+							<th>Submission Date</th>
+							<th>Task Title</th>
+							<th>Assigned Employee</th>
+							<th>Description</th>
+							<th>Actions</th>
+					
+						</thead>
+						<tbody id="tbody">
+						<%
+						if(Taskdata.length!=0){
+							var i=1;
+							Taskdata.forEach(function(data){
+						%>
+						<tr>
+							<td><%=i %></td>							
+							<td><%=data.AssignDate %></td>
+							<td><%=data.Submissiondate %></td>
+							<td><%=data.TaskTitle %></td>
+							<td><%=data.EmployeeName %></td>
+							<td><%=data.TaskDescription %></td>
+							<td>
+								<form action="/Tasks/<%=data.id%>", method="POST">
+									<input type="hidden", name="_method", value="">
+									<button type="submit">X</button>
+								</form>
+							</td>	
+						</tr>																
+						<%  i++; }) %>
+						<% } else{ %>
+							<tr>
+								<td colspan="7">No Data Found</td>
+							</tr>
+						<% } %>
+						</tbody>
+						<tfoot>
+							
+						</tfoot>
+					</table>
+				</div>
+			<div>
+				<br>
+			<form method="POST" enctype="multipart/form-data">	
+				<div class = "row" style="box-sizing:border-box; width: 100%; border:1px solid black; margin: 3px 0 0 0 ;">
+					<div class="col" >
+						<br><label>Task Title</label>
+						<br><input type="text" name="TaskTitle" placeholder="Title" style="width:100%">
+						<br><label>Task Description</label>
+						<br><textarea type="text" name="TasksDescription" placeholder="Description" style="width:100%; height: 90px; ">
+						</textarea>
+					</div>
+					<div class="col">
+						
+						<br><label>Submission date</label> 
+						<br><input type="date" name="Submissiondate" style="width:100%">
+						<br><label>Employee</label>
+						<br><select name="AssignEmployee" style="width:100%">
+							<%
+						if(Employeedata.length!=0){
+						var i=1;
+						Employeedata.forEach(function(data){
+						%>
+					
+						<option value="<%=data.Fullname %>"><%=data.Fullname %></option>
+					
+					<%  i++; }) %>
+					<%   } %>
+						
+					
+						</select>
+						<div>	
+						<br>					
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+						<button class="btn btn-outline-success my-2 my-sm-0" type="reset">clear</button>			
+					</div>
+					<div>
+				</div>	
+			</form>	
+			</div>
+			</form>
+		</div>
+	</div>	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		const searchButton = document.getElementById('search-button');
+			const searchInput = document.getElementById('search-input');
+			searchButton.addEventListener('click', () => {
+			  const inputValue = searchInput.value;
+			  alert(inputValue);
+			});
+	</script>
+</body>
+</html>

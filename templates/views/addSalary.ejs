@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Add Salary</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<style type="text/css">
+		input , select{
+			width: 100%;
+		}
+		textarea{
+			width: 100%;
+			height: 80px;
+		}
+		img{
+			margin-left: 32%;
+			margin-right: auto;
+			margin-top: 20%;
+			margin-bottom: auto;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">
+	<form id ="addSalary" method="POST" enctype="multipart/form-data">
+		<div class="row d-flex justify-content-center " style="margin:20px 20px  0px  20px;">	
+		<h3 align="center">Add Salary</h3>	
+			
+			<div class="col-6" style="box-sizing: border-box; width: 30%; border: 1px solid black;">
+			<label>Type</label>
+					<br><select id="Salary" name="SalaryType">
+							<option value="Daily">Daily</option>
+							<option value="Weekly">Weekly</option>
+							<option value="Biweekly">Biweekly</option>
+							<option value="Monthly">Monthly</option>
+							<option value="FestivalBonus">FestivalBonus</option>
+							<option value="Yearly Profit Share">Yearly Profit Share</option>
+							<option value="Bonus">Bonus</option>
+							<option value="Vacatonal">Vacatonal</option>
+							<option value="Advance">Advance</option>
+							<option value="Others">Others</option>
+						</select>
+						<br><label>Select Employee</label>
+					<br><select id="Employee" name="SelectEmployee">
+						<%
+						if(userData.length!=0){
+						var i=1;
+						userData.forEach(function(data){
+						%>
+					
+						<option value="<%=data.Fullname %>"><%=data.Fullname %></option>
+					
+					<%  i++; }) %>
+					<%   } %>
+				</select>	
+						
+					<br><label>Payment Type: *</label>	
+					<br><select id="Payment" name="PaymentType">
+							<option value="Direct Bank Deposit">Direct Bank Deposit</option>
+							<option value="Cash">Cash</option>
+							<option value="Biweekly">Check</option>
+							<option value="Other">Other</option>					
+						</select>
+					<br><label>Amount</label>
+					<br><input type="text" name="SalaryAmount" required>
+					<br><label>Tax Rate</label>	
+					<br><input type="text" name="SalaryTaxRate" required>
+					<br>	
+			</div>
+			<div class="col-6" style="box-sizing: border-box; width: 30%; border: 1px solid black;">
+			<label>Date*</label>
+			<br><input type="Date" name="SalaryDate" required>
+			<br><label>Salary Month</label>	
+			<br><input type="text" name="SalaryMonth" required></input> 			
+			<br><label>Year</label>	
+			<br><input type="Number" name="SalaryYear" required>
+			<br><label>Note</label>
+			<br><textarea name="Note"></textarea>
+
+			<br><input type="submit" value = "Save Changes" style="width: 50%;" ><input type="reset" style="width: 50%;" >
+			<br><br>
+			</div>		
+		</div>
+	</form>	
+	</div>
+</body>
+</html>

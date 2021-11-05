@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>addEmployee</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">
+		
+            <form method="POST" enctype="multipart/form-data">
+                <div class="row" style="box-sizing: border-box; width: 93%; border: 1px solid black;  margin-right: 20px;">
+                <div class="col-6">
+                    <label>Subject:</label>
+                    <br><input type="text" name="leaveSubject" placeholder="Asking for Leave " width="100%" value="<%=userData.Subject %>" disabled/>
+                    <br><br><textarea name="leave textarea" placeholder="reason of the Leave" style="height: 90px; width: 100%;" value="<%=userData.Reason %>" disabled></textarea>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Leave From </label>
+                            <br><input type="date" name="from" id="from" value="<%=userData.LeaveFrom %>" disabled>
+                            <br><label>"<%=userData.LeavetypeDay %>"</label>
+                            
+                            <br><label>Leave Type</label>
+                            <br><br><select name="LeaveType" disabled>
+                            <option value = "<%=userData.Leavetype %>" selected><%=userData.Leavetype %></option>
+                            <option value="Sick Leave">Sick Leave</option>
+                            <option value="Personal Leave">Personal Leave</option>
+                            <option value="Medical Emergency">Medical Emergency</option>
+                            <option value="Urgent Matter">Urgent Matter</option>
+                            <option value="Parental Leave">Parental Leave</option>
+                            <option value="Paternity Leave">Paternity Leave</option>
+                            <option value="Maternity Leave">Maternity Leave</option>
+                            <option value="Annual Leave">Annual Leave</option>
+                            <option value="Leave Fare Assistance(LFA)">Leave Fare Assistance(LFA)</option>
+                        </select>   
+                            
+                            
+                        </div>
+                        <div class="col-6">
+                            <label>Leave to </label>
+                            <br><input type="date" name="to" id="to" value="<%=userData.Leaveto %>" disabled>
+                            <br><label>"<%=userData.LeavetypePaidorUnpaid %>"</label>
+                            <br><label>Status</label>
+                        <br><select name="LeaveApproved">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                        <br><input type="submit" value="Save">
+                        </div>
+                    </div>    
+                        
+                        
+                        
+                </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+				
+</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script  type="text/javascript" src="./js/script.js"></script>
+		
+</body>
+</html>

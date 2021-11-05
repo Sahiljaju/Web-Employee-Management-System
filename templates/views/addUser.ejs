@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Employees</title>
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+	
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">
+		
+			<form method="GET" enctype="multipart/form-data">	
+				<input type="text" name="ManageEmployeeSearch" placeholder="Search" id="search">
+			<input type="submit" value="Search">
+			<br>
+			<br>
+			</form> 
+		
+		<div align = "center" style="box-sizing: border-box; width: 100%; border: 1px solid black;">			
+				<table class="table table-striped table-hover text-center">
+					<thead>
+						<th>Sr.No.</th>
+						<th>Id</th>
+						<th>Photo</th>
+						<th>Name</th>
+						<th>Department</th>
+						<th>Designation</th>
+						<th>Email</th>
+						<th>Contact</th>
+						<th>Action</th>
+					</thead>
+					<tbody id="tbody">
+						<%
+						if(userData.length!=0){
+						var i=1;
+						userData.forEach(function(data){
+						%>
+						<tr>
+							<td style="vertical-align: center;"><%=i %></td>							
+							<td><%=data.EmployeeId %></td>
+							<td><img src="/images/<%=data.profilephoto %>" style="width: 80px; height: 80px;"   alt="--"></td>
+							<td><%=data.Fullname %></td>
+							<td><%=data.Department %></td>
+							<td><%=data.Designation %></td>
+							<td><%=data.EmailAddress %></td>
+							<td><%=data.HomeContact %></td>
+							<td><a type="button" href="/adduserid/<%=data.id%>">Edit</a>
+							</td>	
+						</tr>																
+						<%  i++; }) %>
+						<% } else{ %>
+							<tr>
+								<td colspan="9">No Data Found</td>
+							</tr>
+						<% } %>
+					</tbody>
+					<tfoot>
+						
+					</tfoot>
+				</table>
+			</div>
+		</div>		
+	</div>
+	<script  type="text/javascript" src="./js/script.js"></script>	
+</body>
+</html>

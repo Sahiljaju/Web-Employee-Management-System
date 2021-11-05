@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/frontend.css">
+	<title>Apply Expense Claim</title>
+</head>
+<body>
+	<%-include('partials/navigation') %>
+	<div id="main">
+			<div class="container">		
+			
+				<h3>Expense Claim</h3>
+				<form method="POST" enctype="multipart/form-data">
+				<div  class="row d-flex justify-content-center">
+					<div class="col-6" style="box-sizing: border-box; width: 50%; border: 1px solid black;"> 
+						<br><label>Date*:</label>
+						<br><input type="text" name="DateofExpense" style="width: 100%;" value="<%=userData.Date %>" disabled>
+						<br><label>Expense Type*</label>
+						<br><select name="ExpenseType" style="width:100%">
+							<option value="<%=userData.ExpenseType %>" selected><%=userData.ExpenseType %></option>
+							<option value="Advertise">Advertise</option>
+							<option value="Daily Office Expense">Daily Office Expense</option>
+							<option value="Domain Hosting">Domain Hosting</option>
+							<option value="Gift">Gift</option>
+							<option value="Heath Care">Heath Care</option>
+							<option value="Insaurance">Insaurance</option>
+							<option value="Loans">Loans</option>
+							<option value="Medical">Medical</option>
+							<option value="Phone">Phone</option>
+							<option value="Phone Bill">Phone Bill</option>
+							<option value="Salary">Salary</option>
+							<option value="Suppliers">Suppliers</option>
+							<option value="Tax">Tax</option>
+							<option value="Transfer Funds">Transfer Funds</option>
+							<option value="Utilities">Utilities</option>
+							<option value="Wages">Wages</option>						
+						</select>
+						<br><label>Amount*:</label>
+						<br><input type="text" name="AmountofExpense" placeholder="0.00" style="width:100%" value="<%=userData.Amount%>" disabled >
+						<br><label>Expense File Details</label>
+						<br><input type="text" name="ExpenseFileName" placeholder=""style="width:100%" value="<%=userData.ExpenseFile%>" disabled>
+						<br>
+						<br><label for="btn" id="my-btn" style="background-color: lightgrey; border: 0.5px solid;"><a href="/pdf/<%= userData.ExpenseDocument %>" type="button" value="view" >View</a></label>
+						<br>
+						<br>					
+					</div>
+					<div class="col-6" style="box-sizing: border-box; width: 50%; border: 1px solid black;"> 
+						<br><label>Expense Title *:</label>
+						<br><input type="text" name="ExpenseTitle" placeholder="Title" style="width:100%" value="<%=userData.LeaveFrom %>" disabled>
+						<br><label>Note:</label>
+						<br><textarea name="Note" style="width:100%; height:127px" value="<%=userData.LeaveFrom %>" disabled></textarea>
+						<br><select name="ExpenseApproved">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+						<br><input type="submit" value="Save">
+						<br>
+					</div>			
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>		
+</body>
+</html>

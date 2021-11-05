@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/frontend.css">
+	
+	<title>login</title>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+    
+        canvas {
+          position: absolute;
+        }
+      </style>
+</head>
+<body>
+	<video id ="video" width="720" height="560" autoplay muted></video>
+    <script type="text/javascript" defer src="./js/face-api.min.js"></script>
+    <script  type="text/javascript" defer src="./js/script.js"></script>
+    <script type="text/javascript">
+    function onload(){
+      var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      var dateTime = date+' '+time;
+    document.getElementById("date").defaultvalue = dateTime;
+}
+    </script>
+</body>
+</html>
